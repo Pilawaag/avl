@@ -10,7 +10,10 @@ int main(void)
     add_data_to_tree(tree, "40");
     add_data_to_tree(tree, "50");
     add_data_to_tree(tree, "25");
-    rm_data_from_tree(tree, "230");
+    rm_data_from_tree(tree, "25");
+    rm_data_from_tree(tree, "40");
+    rm_data_from_tree(tree, "20");
+    rm_data_from_tree(tree, "50");
     display_tree(tree);
     destroy_tree(tree);
     return 0;

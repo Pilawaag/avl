@@ -214,6 +214,10 @@ node_t *remove_data(tree_t *tree, node_t *node, const void *data)
             {
                 tree->free_data(node->data);
                 node->data = temp->data;
+                node->left = temp->left;
+                node->right = temp->right;
+                node->height = temp->height;
+                temp = NULL;
             }
 
             free(temp);
@@ -231,9 +235,6 @@ node_t *remove_data(tree_t *tree, node_t *node, const void *data)
     {
         return node;
     }
-
-    node->height = get_max_height(height(node->left), 
-                                  height(node->right)) + 1;
 
     int balance = get_balance(node);    
 
@@ -259,6 +260,9 @@ node_t *remove_data(tree_t *tree, node_t *node, const void *data)
         return rotate_left(node);
     }
 
+    node->height = get_max_height(height(node->left), 
+                                  height(node->right)) + 1;
+
     return node;
 }
 
@@ -278,12 +282,9 @@ void r_display_tree(tree_t *tree, node_t *node)
     {
         return;
     }
+
     tree->print_data(node->data);
-
-#if DEBUG_TEST
     printf("height = %d\n", node->height);
-#endif
-
     r_display_tree(tree, node->left);
     r_display_tree(tree, node->right);
 }
