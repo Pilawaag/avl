@@ -217,7 +217,6 @@ node_t *remove_data(tree_t *tree, node_t *node, const void *data)
                 node->left = temp->left;
                 node->right = temp->right;
                 node->height = temp->height;
-                temp = NULL;
             }
 
             free(temp);
