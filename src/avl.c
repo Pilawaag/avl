@@ -206,6 +206,11 @@ node_t *remove_data(tree_t *tree, node_t *node, const void *data)
 
             if(NULL == temp)
             {
+                if(node == tree->root)
+                {
+                    tree->root = NULL;
+                }
+
                 temp = node;
                 node = NULL;
                 tree->free_data(temp->data);
